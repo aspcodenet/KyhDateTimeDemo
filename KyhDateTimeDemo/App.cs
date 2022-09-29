@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -100,12 +101,32 @@ namespace KyhDateTimeDemo
 
         public void Run()
         {
+            CalculateDaysToChristmasVacation();
             Invoice();
             var aktuellDag = DateTime.Now;
             var snyggtDatum = aktuellDag.ToString("yyyy-MM-dd HH:mm:ss");    // 2022-09-01      // 29 2022
             Console.WriteLine(snyggtDatum);
 
             DagCounter();
+        }
+
+        public void CalculateDaysToChristmasVacation()
+        {
+            var vacationStarts = new DateTime(2022,12,21);
+            Console.Write("Ange datum i format 2022-10-01");
+            var inmatning = Console.ReadLine();
+
+            // ENDAST HAPPY CASE    2022-02-30
+            var datum = DateTime.ParseExact(inmatning,"yyyy-MM-dd",CultureInfo.CurrentCulture);
+
+//            var ok = DateTime.TryParseExact(inmatning, "yyyy-MM-dd", CultureInfo.CurrentCulture, DateTimeStyles.None, out datum);
+
+            var diff = vacationStarts - datum;
+            Console.WriteLine($"håll ut det är {diff.TotalDays} dagar kvar till jullovet");
+
+            // idag
+            //Mata in ett datum 2022-10-18
+            // håll ut det är 105 dagar kvar tll jullovet
         }
 
 
