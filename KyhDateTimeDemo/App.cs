@@ -100,12 +100,29 @@ namespace KyhDateTimeDemo
 
         public void Run()
         {
-            DagCounter();
+            Invoice();
             var aktuellDag = DateTime.Now;
-            Console.WriteLine(aktuellDag);
+            var snyggtDatum = aktuellDag.ToString("yyyy-MM-dd HH:mm:ss");    // 2022-09-01      // 29 2022
+            Console.WriteLine(snyggtDatum);
+
+            DagCounter();
+        }
 
 
 
+        public void Invoice()
+        {
+            var invoiceDate = DateTime.Now;
+            Console.WriteLine($"Fakturadag: {invoiceDate.ToString("yyyy-MM-dd")}");
+
+            //förfallodag
+            var dueDate = invoiceDate.AddDays(30);
+            if (dueDate.DayOfWeek == DayOfWeek.Saturday)
+                dueDate = dueDate.AddDays(-1); // friday -> 29 
+            else if (dueDate.DayOfWeek == DayOfWeek.Sunday)
+                dueDate = dueDate.AddDays(1); // Mpndag -> 31
+                                              // 
+            Console.WriteLine($"Förfallodag: {dueDate.ToString("yyyy-MM-dd")}");
         }
     }
 }
