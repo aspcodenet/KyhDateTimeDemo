@@ -76,7 +76,7 @@ namespace KyhDateTimeDemo
             Console.WriteLine("Ange ditt födelsemånad(1-12):");
             var month = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Ange din dag(1-31):");
-            var day = Convert.ToInt32(Console.ReadLine());
+            var day = Convert.ToInt32(Console.ReadLine());  // 2022-08-01
 
             var yourBirthDay = new DateTime(year, month, day);
 
