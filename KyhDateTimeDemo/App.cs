@@ -101,9 +101,15 @@ namespace KyhDateTimeDemo
 
         public void Run()
         {
+            var aktuellDag = DateTime.Now;
+            var s = aktuellDag.ToString("dddd", new CultureInfo("es-ES"));
+            var s2 = aktuellDag.ToString("dddd", new CultureInfo("sv-SE"));
+
+
+
             CalculateDaysToChristmasVacation();
             Invoice();
-            var aktuellDag = DateTime.Now;
+            aktuellDag = DateTime.Now;
             var snyggtDatum = aktuellDag.ToString("yyyy-MM-dd HH:mm:ss");    // 2022-09-01      // 29 2022
             Console.WriteLine(snyggtDatum);
 
